@@ -1,0 +1,14 @@
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.Common\bin\Release\CZBK.ItcastOA.Common.dll
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.Common\bin\Release\CZBK.ItcastOA.Common.pdb
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.Common\bin\Release\Newtonsoft.Json.dll
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.Common\bin\Release\System.Net.Http.Formatting.dll
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.Common\bin\Release\System.Web.Http.dll
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.Common\bin\Release\System.Web.Http.WebHost.dll
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.Common\bin\Release\Newtonsoft.Json.xml
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.Common\bin\Release\System.Net.Http.Formatting.xml
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.Common\bin\Release\System.Web.Http.xml
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.Common\bin\Release\System.Web.Http.WebHost.xml
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.Common\obj\Release\CZBK.ItcastOA.Common.csprojAssemblyReference.cache
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.Common\obj\Release\CZBK.ItcastOA.Common.csproj.CopyComplete
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.Common\obj\Release\CZBK.ItcastOA.Common.dll
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.Common\obj\Release\CZBK.ItcastOA.Common.pdb

@@ -1,0 +1,279 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index</title>
+    <link href="~/Content/default/easyui.css" rel="stylesheet" />
+    <link href="~/Content/icon.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.easyui.min.js"></script>
+    <script src="~/Scripts/easyui-lang-zh_CN.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/datapattern.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            loadData();
+            $('#dlg_Add').dialog('close');
+            $('#dlg_Edit').dialog('close');
+            $("#addDiv").css("display", "none");
+            $("#editDiv").css("display", "none");
+        });
+
+        //表格数据读取
+        function loadData(pars) {
+            $('#tt').datagrid({
+                url: '/UserInfo/GetUserInfoList',
+                title: '用户数据表格',
+                width: 700,
+                height: 400,
+                fitColumns: true, //列自适应
+                nowrap: false,
+                idField: 'ID',//主键列的列明
+                loadMsg: '正在加载用户的信息...',
+                pagination: true,//是否有分页
+                singleSelect: false,//是否单行选择
+                pageSize: 5,//页大小，一页多少条数据
+                pageNumber: 1,//当前页，默认的
+                pageList: [5, 10, 15, 20],
+                queryParams: pars,//往后台传递参数
+                columns: [[//c.UserName, c.UserPass, c.Email, c.RegTime
+                    { field: 'ck', checkbox: true, align: 'left', width: 50 },
+                    { field: 'id', title: '工号', width: 120 },
+                    { field: 'UName', title: '姓名', width: 120 },
+                    { field: 'UEmail', title: '邮箱', width: 120 },
+                    //{
+                    //    field: 'ULogin', title: '上次登录时间', width: 80, align: 'right',
+                    //    formatter: function (value, row, index) {
+                    //        return (eval(value.replace(/\/Date\((\d+)\)\//gi, "new Date($1)"))).pattern("yyyy-MM-dd");
+                    //    }
+                    //}
+                ]],
+                toolbar: [{
+                    id: 'btnDelete',
+                    text: '删除',
+                    iconCls: 'icon-remove',
+                    handler: function () {
+
+                        deleteInfo();
+                    }
+                }, {
+                    id: 'btnAdd',
+                    text: '添加',
+                    iconCls: 'icon-add',
+                    handler: function () {
+
+                        addInfo();
+                    }
+                }, {
+                    id: 'btnEidt',
+                    text: '编辑',
+                    iconCls: 'icon-edit',
+                    handler: function () {
+
+                        showEditInfo();
+                    }
+                }, {
+                    id: 'btnSetUserRole',
+                    text: '为用户分配角色',
+                    iconCls: 'icon-edit',
+                    handler: function () {
+
+                        showSetUserRoleInfo();
+                    }
+                }, {
+                    id: 'btnSetUserAction',
+                    text: '为用户分配权限',
+                    iconCls: 'icon-edit',
+                    handler: function () {
+
+                        showSetUserActionInfo();
+                    }
+                }],
+            });
+        }
+
+
+        //删除数据
+        function deleteInfo() {
+            var rows = $('#tt').datagrid("getSelections");
+            if (!rows || rows.length == 0) {
+                $.messager.alert("提醒", "请选择需要删除的记录", "error");
+                return;
+            }
+            $.messager.confirm("提示", "确定要删除数据吗?", function (r) {
+                if (r) {
+                    //获取要删除的记录的ID值
+                    var rowsLength = rows.length;
+                    var strId = "";
+                    for (var i = 0; i < rowsLength; i++) {
+                        strId = strId + rows[i].UName + ",";
+                    }
+                    strId = strId.substring(0, strId.length - 1);
+                    //将需要删除的记录发送到服务器端
+                    $.post("/UserInfo/DeleteUserInfo", { "strId": strId }, function (data) {
+                        if (data == "OK") {
+                            $('#tt').datagrid('reload');//加载表格不会跳到第一页
+                            //清除上次所选择的项的值(ajax异步请求部分刷新,需要手动函数进行清楚控件内的属性或选择项)
+                            $('#tt').datagrid('clearSelections');
+                        }
+                        else {
+                            $.messager.alert("提醒", "删除记录失败!", "error");
+                        }
+                    })
+                }
+            }
+            )
+        };
+
+        //添加数据
+        function addInfo() {
+            $('#dlg_Add').dialog('open');
+            $('#addDiv').css('display', 'block');
+        }
+
+        //表单校验
+        function validateInfo(control) {
+            control.validate({//表示对哪个form表单进行校验，获取form标签的id属性的值
+                rules: {//表示验证规则
+                    ID: "required",//表示对哪个表单元素进行校验，要写具体的表单元素的name属性的值
+                    userName: {
+                        required: true
+                    },
+                    Email: {
+                        required: true,
+                        //minlength: 5
+                    }
+                },
+                messages: {
+                    ID: "请输入工号",
+                    userName: {
+                        required: "请输入用户名"
+                    },
+                    Email: {
+                        required: "请输入邮箱",
+                    }
+                }
+            });
+        }
+
+        //编辑数据
+        function showEditInfo() {
+            var rows = $('#tt').datagrid("getSelections");
+            if (rows.length == 0) {
+                $.messager.alert("提示", "请选择要修改的数据", "error");
+                return;
+            }
+            if (rows.length > 1) {
+                $.messager.alert("提示", "请选择一条修改的数据", "error");
+                return;
+            }
+            var id = rows[0].id;
+            $.post("/UserInfo/ShowEditUserInfo", { "id": id }, function (data) {
+                $('#txt_id').val(data.id);
+                $('#txt_userName').val(data.userName);
+                $('#txt_Email').val(data.Email);
+                $('#txt_Remark').val(data.Remark);
+            });
+            $('#dlg_Edit').dialog('open');
+            $('#editDiv').css('display', 'block');
+        };
+
+        //完成添加数据后调用的方法
+        function afterAdd(data) {
+            if (data == "OK") {
+                $('#dlg_Add').dialog('close');
+                $('#tt').datagrid('reload');//加载表格不会跳到第一页
+            }
+            else {
+                $.messager.alert("提醒", "添加数据失败!", "Fail");
+            }
+        }
+
+        //完成编辑数据后调用的方法
+        function afterEdit(data) {
+            if (data == "OK") {
+                $('#dlg_Edit').dialog('close');
+                $('#tt').datagrid('reload');//加载表格不会跳到第一页
+                $('#tt').datagrid('clearSelections');
+            }
+            else {
+                $.messager.alert("提醒", "编辑数据失败!", "Fail");
+            }
+        }
+    </script>
+</head>
+<body>
+    @* --------------------------------------------------搜索表格-------------------------------------------- *@
+    <div>
+        <table id="tt" style="width: 700px;" title="标题，可以使用代码进行初始化，也可以使用这种属性的方式" iconcls="icon-edit">
+        </table>
+    </div>
+    @* --------------------------------------------------新增表单-------------------------------------------- *@
+    <div id="dlg_Add" class="easyui-dialog" title="新增用户信息" style="width:400px;height:300px;padding:10px"
+         data-options="
+				iconCls: 'icon-save',
+				buttons: [{
+					text:'Ok',
+					iconCls:'icon-ok',
+					handler:function(){
+						 validateInfo($('#addForm'));
+						$('#addForm').submit();
+					}
+				},{
+					text:'Cancel',
+					handler:function(){
+				        $('#dlg_Add').dialog('close');
+					}
+				}]
+			">
+        <div id="addDiv" style="display:none">
+            @using (Ajax.BeginForm("AddUserInfo", "UserInfo", new { }, new AjaxOptions() { HttpMethod = "post", OnSuccess = "afterAdd" }, new { id = "addForm" }))
+            {
+                <input type="hidden" name="Remark" id="txt_Remark" />
+                <table>
+                    <tr><td>用户ID</td><td><input type="text" name="ID" /></td></tr>
+                    <tr><td>用户名</td><td><input type="text" name="userName" /></td></tr>
+                    <tr><td>邮箱地址</td><td><input type="text" name="Email" /></td></tr>
+                </table>
+            }
+        </div>
+    </div>
+
+
+    @* --------------------------------------------------编辑表单-------------------------------------------- *@
+    <div id="dlg_Edit" class="easyui-dialog" title="编辑用户信息" style="width:400px;height:300px;padding:10px"
+         data-options="
+				iconCls: 'icon-save',
+				buttons: [{
+					text:'Ok',
+					iconCls:'icon-ok',
+					handler:function(){
+						$('#editForm').submit();
+					}
+				},{
+					text:'Cancel',
+					handler:function(){
+					    $('#dlg_Edit').dialog('close');
+					}
+				}]
+			">
+        <div id="editDiv" style="display:none">
+            @using (Ajax.BeginForm("EditUserInfo", "UserInfo", new { }, new AjaxOptions() { HttpMethod = "post", OnSuccess = "afterEdit" }, new { id = "editForm" }))
+            {
+                <table>
+                    <tr><td>用户ID</td><td><input type="text" name="ID" id="txt_id" readonly="readonly" style="background-color:lightgray" /></td></tr>
+                    <tr><td>用户名</td><td><input type="text" name="userName" id="txt_userName" /></td></tr>
+                    <tr><td>邮箱地址</td><td><input type="text" name="Email" id="txt_Email" /></td></tr>
+                </table>
+            }
+        </div>
+    </div>
+</body>
+
+</html>
+
+

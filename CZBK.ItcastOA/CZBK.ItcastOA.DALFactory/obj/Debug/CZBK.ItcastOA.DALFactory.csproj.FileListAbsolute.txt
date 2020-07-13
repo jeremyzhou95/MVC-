@@ -1,0 +1,16 @@
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.DALFactory\bin\Debug\CZBK.ItcastOA.DALFactory.dll
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.DALFactory\bin\Debug\CZBK.ItcastOA.DALFactory.pdb
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.DALFactory\bin\Debug\CZBK.ItcastOA.DAL.dll
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.DALFactory\bin\Debug\CZBK.ItcastOA.IDAL.dll
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.DALFactory\bin\Debug\CZBK.ItcastOA.model.dll
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.DALFactory\bin\Debug\EntityFramework.dll
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.DALFactory\bin\Debug\CZBK.ItcastOA.DAL.pdb
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.DALFactory\bin\Debug\CZBK.ItcastOA.IDAL.pdb
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.DALFactory\bin\Debug\CZBK.ItcastOA.model.pdb
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.DALFactory\bin\Debug\CZBK.ItcastOA.model.dll.config
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.DALFactory\bin\Debug\EntityFramework.xml
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.DALFactory\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.DALFactory\obj\Debug\CZBK.ItcastOA.DALFactory.csprojAssemblyReference.cache
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.DALFactory\obj\Debug\CZBK.ItcastOA.DALFactory.csproj.CopyComplete
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.DALFactory\obj\Debug\CZBK.ItcastOA.DALFactory.dll
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.DALFactory\obj\Debug\CZBK.ItcastOA.DALFactory.pdb

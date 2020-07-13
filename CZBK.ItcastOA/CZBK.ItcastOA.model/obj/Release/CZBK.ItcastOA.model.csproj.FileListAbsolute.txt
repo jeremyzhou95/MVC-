@@ -1,0 +1,13 @@
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.model\bin\Release\CZBK.ItcastOA.model.dll.config
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.model\bin\Release\CZBK.ItcastOA.model.dll
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.model\bin\Release\CZBK.ItcastOA.model.pdb
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.model\bin\Release\EntityFramework.dll
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.model\bin\Release\EntityFramework.SqlServer.dll
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.model\bin\Release\EntityFramework.xml
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.model\bin\Release\EntityFramework.SqlServer.xml
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.model\bin\Release\zh-Hans\EntityFramework.resources.dll
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.model\bin\Release\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.model\obj\Release\CZBK.ItcastOA.model.csprojAssemblyReference.cache
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.model\obj\Release\CZBK.ItcastOA.model.csproj.CopyComplete
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.model\obj\Release\CZBK.ItcastOA.model.dll
+D:\OA项目\CZBK.ItcastOA\CZBK.ItcastOA.model\obj\Release\CZBK.ItcastOA.model.pdb
